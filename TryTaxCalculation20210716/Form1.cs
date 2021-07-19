@@ -283,6 +283,10 @@ namespace TryTaxCalculation20210716
             {
                 taxValue = 11230;
             }
+            else if (comboBox1_use.SelectedItem as string == "貨車" && comboBox2_cc.SelectedItem as string == "500以下")
+            {
+                taxValue = 11230;
+            }
         }
         #endregion
 

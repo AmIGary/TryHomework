@@ -58,6 +58,15 @@ namespace TryTaxCalculation20210716
             this.label5_result.Text = "";
         }
 
+        private void dateTimePicker1_startDate_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePicker1_startDate.CustomFormat = $"民國{dateTimePicker1_startDate.Value.Year - 1911}年MM月dd日";
+        }
+
+        private void dateTimePicker2_endDate_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePicker2_endDate.CustomFormat = $"民國{dateTimePicker2_endDate.Value.Year - 1911}年MM月dd日";
+        }
 
         private void comboBox1_use_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -193,8 +202,8 @@ namespace TryTaxCalculation20210716
             this.label5_result.Text = $@"
              使用期間:民國{dateTimePicker1_startDate.Value.Year - 1911}年01月01日 ~ 民國{dateTimePicker2_endDate.Value.Year - 1911}年12月31日
              計算天數:365天
-             汽缸CC數:{comboBox1_use.SelectedItem as string}
-             用途:{comboBox2_cc.SelectedItem as string}
+             用途:{comboBox1_use.SelectedItem as string}
+             汽缸CC數:{comboBox2_cc.SelectedItem as string}
              計算公式:{taxValue}*{leapOrNot}/{leapOrNot} = {taxValue * leapOrNot / leapOrNot}元
              應納稅額: 共{taxValue}元";
         }
@@ -211,29 +220,35 @@ namespace TryTaxCalculation20210716
             DateTime dateStart = dateTimePicker1_startDate.Value.Date;
             DateTime dateEnd = dateTimePicker2_endDate.Value.Date;
             dateDuration = new TimeSpan(dateEnd.Ticks - dateStart.Ticks).Days;
+            int i;
+            
 
             if (comboBox1_use.SelectedItem == null || comboBox2_cc.SelectedItem == null)
             {
                 this.label5_result.Text = "請選擇正確用途及CC數";
                 return;
             }
-            else if (dateStart >= dateEnd)
+            else if (dateStart > dateEnd)
             {
                 this.label5_result.Text = "請選擇正確日期";
                 return;
             }
             else
             {
+                dateDuration++;
                 this.TaxCalculate();
             }
+            
 
             this.label5_result.Text = $@"
              使用期間:民國{ dateTimePicker1_startDate.Value.Year - 1911}年{dateTimePicker1_startDate.Value.Month}月{dateTimePicker1_startDate.Value.Day}日 ~ 民國{dateTimePicker2_endDate.Value.Year - 1911}年{dateTimePicker2_endDate.Value.Month}月{dateTimePicker2_endDate.Value.Day}日
              計算天數:{Convert.ToString(dateDuration)}天
-             汽缸CC數:{comboBox1_use.SelectedItem as string}
-             用途:{comboBox2_cc.SelectedItem as string}
+             用途:{comboBox1_use.SelectedItem as string}
+             汽缸CC數:{comboBox2_cc.SelectedItem as string}
              計算公式:{taxValue}*{dateDuration}/365 = {taxValue * dateDuration / 365}元
              應納稅額: 共{taxValue * dateDuration / 365}元";
+
+          
         }
 
         /// <summary>控制項初始化</summary>
@@ -523,5 +538,7 @@ namespace TryTaxCalculation20210716
 
 
         }
+
+       
     }
 }

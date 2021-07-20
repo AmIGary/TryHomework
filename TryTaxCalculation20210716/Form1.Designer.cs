@@ -155,6 +155,7 @@ namespace TryTaxCalculation20210716
             this.dateTimePicker1_startDate.Name = "dateTimePicker1_startDate";
             this.dateTimePicker1_startDate.Size = new System.Drawing.Size(200, 22);
             this.dateTimePicker1_startDate.TabIndex = 15;
+            this.dateTimePicker1_startDate.ValueChanged += new System.EventHandler(this.dateTimePicker1_startDate_ValueChanged);
             // 
             // dateTimePicker2_endDate
             // 
@@ -162,6 +163,7 @@ namespace TryTaxCalculation20210716
             this.dateTimePicker2_endDate.Name = "dateTimePicker2_endDate";
             this.dateTimePicker2_endDate.Size = new System.Drawing.Size(200, 22);
             this.dateTimePicker2_endDate.TabIndex = 16;
+            this.dateTimePicker2_endDate.ValueChanged += new System.EventHandler(this.dateTimePicker2_endDate_ValueChanged);
             // 
             // button1_calculate
             // 
@@ -186,7 +188,7 @@ namespace TryTaxCalculation20210716
             // label5_result
             // 
             this.label5_result.AutoSize = true;
-            this.label5_result.Location = new System.Drawing.Point(128, 195);
+            this.label5_result.Location = new System.Drawing.Point(116, 195);
             this.label5_result.Name = "label5_result";
             this.label5_result.Size = new System.Drawing.Size(43, 15);
             this.label5_result.TabIndex = 19;

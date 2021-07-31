@@ -220,7 +220,6 @@ namespace TryTaxCalculation20210716
             DateTime dateStart = dateTimePicker1_startDate.Value.Date;
             DateTime dateEnd = dateTimePicker2_endDate.Value.Date;
             dateDuration = new TimeSpan(dateEnd.Ticks - dateStart.Ticks).Days;
-            int i;
             
 
             if (comboBox1_use.SelectedItem == null || comboBox2_cc.SelectedItem == null)
@@ -270,6 +269,7 @@ namespace TryTaxCalculation20210716
         /// <summary>稅務公式 </summary>
         private void TaxCalculate()
         {
+            
             if (comboBox1_use.SelectedItem as string == "機車" && comboBox2_cc.SelectedItem as string == "150以下 / 12HP以下(12.2PS以下)")
             {
                 taxValue = 0;

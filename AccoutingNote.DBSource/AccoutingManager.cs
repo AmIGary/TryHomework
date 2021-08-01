@@ -43,6 +43,7 @@ namespace AccountingNote.Auth
         }
 
 
+
         /// <summary> 查詢流水帳 </summary>
         /// <param name="id"></param>
         /// <param name="userID"></param>
@@ -222,5 +223,40 @@ namespace AccountingNote.Auth
                 Logger.WriteLog(ex);
             }
         }
+
+        /// <summary>
+        /// 查詢會員資料
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        public static DataTable GetUserList(string ID)
+        {
+            string connStr = DBHelper.GetConnectionString();
+            string dbCommand =
+                $@" SELECT 
+                        ID,
+                        Account,
+                        Name,
+                        Email,
+                        UserLevel,
+                        CreateDate
+                    FROM UserInfo
+                ";
+
+            List<SqlParameter> list = new List<SqlParameter>();
+            list.Add(new SqlParameter("@id", ID));
+
+            try
+            {
+                return DBHelper.ReadDataTable(connStr, dbCommand, list);
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex);
+                return null;
+            }
+        }
+
+
     }
 }

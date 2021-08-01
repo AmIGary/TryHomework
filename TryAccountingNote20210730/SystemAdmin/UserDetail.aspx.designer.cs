@@ -7,12 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
-namespace TryAccountingNote20210730.SystemAdmin
-{
-    public partial class UserDetail
-    {
-
+namespace TryAccountingNote20210730.SystemAdmin {
+    
+    
+    public partial class UserDetail {
+        
         /// <summary>
         /// form1 控制項。
         /// </summary>

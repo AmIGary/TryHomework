@@ -33,5 +33,38 @@ namespace AccountingNote.Auth
                 return null;
             }
         }
+
+        public static bool UpdateUserPWD(string PWD, string ID)  //更改密碼
+        {
+
+            string connStr = DBHelper.GetConnectionString();
+            string dbCommand =
+                $@" UPDATE [Userinfo]
+                    SET
+                     PWD = @pwd
+                    WHERE 
+                     ID = @id;
+                 ";
+
+            List<SqlParameter> paramList = new List<SqlParameter>();
+            paramList.Add(new SqlParameter("@pwd", PWD));
+            paramList.Add(new SqlParameter("@id", ID));
+
+
+            try
+            {
+                int effectRows = DBHelper.ModifyData(connStr, dbCommand, paramList);
+
+                if (effectRows == 1)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex);
+                return false;
+            }
+        }
     }
 }

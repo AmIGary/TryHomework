@@ -45,6 +45,7 @@ namespace AccountingNote.Auth
             model.Account = dr["Account"].ToString();
             model.Name = dr["Name"].ToString();
             model.Email = dr["Email"].ToString();
+            model.PWD = dr["PWD"].ToString();
 
             return model;
         }

@@ -9,11 +9,12 @@
 </head>
 <body>
     <form id="form1" runat="server">
-         <div >
+        <div>
             <h1>流水帳管理系統</h1>
             <a href="Login.aspx">登入</a>
         </div>
-        <asp:PlaceHolder runat="server" ID="plcLogin" Visible="false">Account:
+        <asp:PlaceHolder runat="server" ID="plcLogin" Visible="false">
+            Account:
             <asp:TextBox ID="txtAccount" runat="server"></asp:TextBox>
             <br />
             Password:

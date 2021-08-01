@@ -12,6 +12,7 @@ namespace AccountingNote.Auth
         public string Account { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
+        public string PWD { get; set; }
 
     }
 }
